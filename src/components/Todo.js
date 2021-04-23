@@ -5,12 +5,24 @@ import React from 'react'
     const deleteHandler = () => {
         setTodos(todos.filter(ele => ele.id !== todo.id))
     }
+
+    //Complete handler
+    const completeHandler = () => {
+        setTodos(todos.map((item) => {
+            if(item.id === todo.id){
+                return {
+                    ...item, completed: !item.completed
+                }
+            }
+            return item
+        }))
+    }
     return (
        <div className="todo">
-           <li className="todo-item" >
+           <li className={`todo-item ${todo.completed && "completed"}`} >
                {text}
            </li>
-           <button className="complete-btn">
+           <button onClick={completeHandler} className="complete-btn">
                <i className="fas fa-check"></i>
            </button>
            <button onClick={deleteHandler} className="trash-btn"> 
