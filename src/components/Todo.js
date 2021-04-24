@@ -2,6 +2,7 @@ import React from 'react'
 
  const  Todo = ({text,todo, todos,setTodos }) => {
     //Delete handler
+    console.log('simple comment')
     const deleteHandler = () => {
         setTodos(todos.filter(ele => ele.id !== todo.id))
     }
