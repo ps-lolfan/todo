@@ -4,15 +4,19 @@
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background-image: linear-gradient(120deg, #f6d365 0%, #3853ac 100%);
   color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
 header {
   font-size: 2rem;
-}
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+  -2px -2px 4px rgba(255, 255, 255, 0.4);
 
+}
+/* fda085 */
 header,
 form {
   min-height: 20vh;
@@ -20,6 +24,9 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+ 
+
 form input,
 form button {
   padding: 0.5rem;

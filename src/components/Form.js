@@ -9,20 +9,27 @@ const Form = ({ setStatus, setInputText, inputText, todos, setTodos }) => {
   //To handle submit text
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    console.log(inputText.trim(" "));
+    console.log();
 
-    setTodos([
-      ...todos,
-      {
-        text: inputText,
-        completed: false,
-        pending: true,
-        abandoned: false,
-        inprogress: false,
-        id: Math.random() * 1000,
-      },
-    ]);
-    setInputText("");
+    if(inputText === null || inputText.match(/^ *$/) !== null){
+      //error to be displayed
+      console.log('edge case')
+    } else {
+      setTodos([
+        ...todos,
+        {
+          text: inputText,
+          completed: false,
+          pending: true,
+          abandoned: false,
+          inprogress: false,
+          id: Math.random() * 1000,
+        },
+      ]);
+      setInputText("");
+    }
+
+    
   };
 
   //Filter handling
