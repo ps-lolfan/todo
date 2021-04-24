@@ -34,6 +34,7 @@ const Form = ({ setStatus, setInputText, inputText, todos, setTodos }) => {
       <input
         value={inputText}
         onChange={inputTextHandler}
+        placeholder="Enter the task here..."
         type="text"
         className="todo-input"
       />

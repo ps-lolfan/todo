@@ -1,6 +1,12 @@
 import React from "react";
+import StatusDisplay from './StatusDisplay'
+import ReactTooltip from "react-tooltip";
+
 
 const Todo = ({ text, todo, todos, setTodos }) => {
+
+
+
   //Delete handler
   const deleteHandler = () => {
     setTodos(todos.filter((ele) => ele.id !== todo.id));
@@ -70,22 +76,38 @@ const Todo = ({ text, todo, todos, setTodos }) => {
   };
   return (
     <div className="todo">
-      <li className={`todo-item ${todo.completed && "completed"}`}>{text} <i class="fas fa-hourglass"></i>
+      <li className={`todo-item ${todo.abandoned  === true ?  "completed" : ''}`}>{text} 
+      {<sup>{' '}
+       <StatusDisplay status={`${todo.completed  === true ? 'Completed': todo.inprogress  === true ? "In progress" : todo.pending === true ? "Pending" : "Abandoned"}`} />
+        </sup>  }
       </li>
-      <button name="inprogress" onClick={completeHandler} className="complete-btn">
-        <i className="fas fa-check">in pro</i>
+      <button name="inprogress"  data-tip data-for="registerTip" onClick={completeHandler} className="inprogress-btn">
+      <i className="fas fa-hourglass"></i>
       </button>
-      
-      <button name="abandoned" onClick={completeHandler} className="complete-btn">
-        <i className="fas fa-check">ab</i>
+      <ReactTooltip id="registerTip" place="bottom" effect="solid">
+        Take up task
+      </ReactTooltip>
+
+      <button data-tip data-for="abb" name="abandoned" onClick={completeHandler} className="abandon-btn" >
+      <i className="fas fa-times-circle"></i>     
+       </button>
+       <ReactTooltip id="abb" place="bottom" effect="solid">
+        Abandon task 🗙
+      </ReactTooltip>
+
+      <button data-tip data-for="completed" name="completed" onClick={completeHandler} className="complete-btn">
+        <i className="fas fa-check"></i>
       </button>
-      <button name="completed" onClick={completeHandler} className="complete-btn">
-        <i className="fas fa-check">comple</i>
-      </button>
+      <ReactTooltip id="completed" place="bottom" effect="solid">
+        Complete task ✅
+      </ReactTooltip>
    
-      <button onClick={deleteHandler} className="trash-btn">
+      <button data-tip data-for="delete" onClick={deleteHandler} className="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
+      <ReactTooltip id="delete" place="bottom" effect="solid">
+        Delete task ❌
+      </ReactTooltip>
     </div>
   );
 };
