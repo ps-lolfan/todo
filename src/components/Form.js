@@ -16,6 +16,9 @@ const Form = ({ setStatus, setInputText, inputText, todos, setTodos }) => {
       {
         text: inputText,
         completed: false,
+        pending: true,
+        abandoned: false,
+        inprogress: false,
         id: Math.random() * 1000,
       },
     ]);
@@ -40,7 +43,7 @@ const Form = ({ setStatus, setInputText, inputText, todos, setTodos }) => {
       <div className="select">
         <select onChange={statusHandler} name="todos" className="filter-todo">
           <option value="all">Today`s Tasks</option>
-          <option value="uncompleted">Pending</option>
+          <option value="pending">Pending</option>
           <option value="abandoned">Abandoned</option>
           <option value="completed">Completed</option>
           <option value="inprogress">Inprogress</option>

@@ -27,9 +27,19 @@ function App() {
         setFilteredTodos(todos.filter((todo) => todo.completed === true));
         break;
 
-      case "uncompleted":
-        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+     
+    
+        case "pending":
+        setFilteredTodos(todos.filter((todo) => todo.pending === true));
         break;
+
+        case "inprogress":
+        setFilteredTodos(todos.filter((todo) => todo.inprogress === true));
+        break;
+
+        case "abandoned":
+          setFilteredTodos(todos.filter((todo) => todo.abandoned === true));
+          break;
 
       default:
         setFilteredTodos(todos);
