@@ -10,9 +10,15 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  //useEffect to get from local storage
+  useEffect(() => {
+   getLocalStorage();
+  }, [])
+
   //useEffect to maintain filters
   useEffect(() => {
     filterHandler();
+    saveLocalStorage();
   }, [todos, status]);
   //Fucntions
   const filterHandler = () => {
@@ -31,16 +37,26 @@ function App() {
     }
   };
 
-  //save to local storage for persistance
-
+  //local storage for persistance
   const saveLocalStorage = () =>{
+  
+      localStorage.setItem('todos', JSON.stringify(todos))
     
+  }
+
+  const getLocalStorage = () =>{
+    if(localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]))
+    } else {
+      let localTodos = JSON.parse(localStorage.getItem('todos', JSON.stringify(todos)))
+      setTodos(localTodos)
+    }
   }
 
   return (
     <div className="App">
       <header>
-        <h1>Simple todo List </h1>
+        <h1>Schedule Your Day</h1>
       </header>
       <Form
         setStatus={setStatus}
